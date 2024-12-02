@@ -42,7 +42,7 @@ export default function Nav() {
   ];
 
   return (
-    <div className="ml-6 flex justify-between mb-8">
+    <div className="mt-6 ml-6 flex justify-between mb-8">
       <a href="#">
         <img
           className="w-12 h-12 hover:pointer"
