@@ -1,5 +1,7 @@
-import React from 'react'
-import TypeWriterEffect from 'react-typewriter-effect';
+
+// import TypeWriterEffect from 'react-typewriter-effect';
+
+// import { useState, useEffect } from "react";
 
 const tools = [
   {
@@ -43,22 +45,23 @@ const tools = [
 
 
 function Intro() {
-
+  
   return (
     <>
-        <div className='font-courier ml-6'>
-        <TypeWriterEffect 
+        <div className='font-courier mt-16 ml-6'>
+        {/* <TypeWriterEffect 
             textStyle={{
               fontSize: '2.25rem', // 4xl
               fontWeight: 'bold',
             }}
             startDelay={100}
             cursorColor="black"
-            text="Hello i'm Resasa, Software Engineering"
+            text="Hello i'm Resasa,"
             typeSpeed={130}
             hideCursorAfterText={true}
             // scrollArea={myAppRef}
-        />
+        /> */}
+          <p className="font-bold text-5xl h-36 ">Let this blank</p>
            <p className='mb-4 mt-4'>Tool that i'm used</p>
             <ol className='what-im-do grid grid-rows-4 grid-flow-col gap-4'>
               {tools.map((tool)=>(

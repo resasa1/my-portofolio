@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Nav() {
   // Set default color to white
@@ -7,7 +7,7 @@ export default function Nav() {
   // const palleteColor = {
     
   // }
-
+  
   const colorOptions = {
     white: "#FBFAF5",
     red: "#fcf2f2",
@@ -42,7 +42,7 @@ export default function Nav() {
   ];
 
   return (
-    <div className="mt-6 ml-6 flex justify-between mb-8">
+    <div className="mt-5 ml-6 mr-6 flex justify-between gap-10 mb-8">
       <a href="#">
         <img
           className="w-12 h-12 hover:pointer"
