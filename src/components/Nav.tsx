@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 
+interface colorType {
+  white: string;
+  red: string;
+  blue: string;
+  green: string;
+  yellow: string;
+}
+
 export default function Nav() {
   // Set default color to white
   const [color, setColor] = useState("#FFFFFF");
+  const [sidebarColor, setSidebarColor] = useState("#FFFFFF");
 
-  // const palleteColor = {
-    
-  // }
-  
-  const colorOptions = {
+  const colorOptions: colorType = {
     white: "#FBFAF5",
     red: "#fcf2f2",
     blue: "#f2f4fc",
@@ -20,11 +25,19 @@ export default function Nav() {
     const bodyStyle = document.body.style;
     bodyStyle.transition = "background-color 0.5s ease";
     bodyStyle.backgroundColor = color;
-    const colorName = Object.keys(colorOptions).find(
+    const colorName = (Object.keys(colorOptions) as (keyof colorType)[]).find(
       (key) => colorOptions[key] === color
     );
     console.log(`color changed to ${colorName}`);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [color]);
+
+  useEffect(() => {
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+      sidebar.setAttribute('style', `background-color: ${sidebarColor}; transition: background-color 0.5s ease;`);
+    }
+  }, [sidebarColor]);
 
   const listNav = [
     {
@@ -50,7 +63,7 @@ export default function Nav() {
           alt="globally"
         />
       </a>
-      <ul className="flex gap-4 sticky">
+      <ul className="flex gap-4 sticky sidebar">
         {listNav.map((item, index) => (
           <li
             className="border-solid border-2 border-slate-150 rounded-md p-2 hover:bg-slate-200"
@@ -62,9 +75,13 @@ export default function Nav() {
         {/* color selection */}
         <select className="border-solid border-2 border-slate-150 rounded-md"
           value={Object.keys(colorOptions).find(
-            (key) => colorOptions[key] === color
+            (key) => colorOptions[key as keyof colorType] === color
           )}
-          onChange={(e) => setColor(colorOptions[e.target.value])}
+          onChange={(e) => {
+            const selectedColor = colorOptions[e.target.value as keyof colorType];
+            setColor(selectedColor);
+            setSidebarColor(selectedColor);
+          }}
         >
           {Object.keys(colorOptions).map((colorName) => (
             <option key={colorName} value={colorName}>
