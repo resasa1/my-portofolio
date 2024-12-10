@@ -1,6 +1,6 @@
 # My Portofolio
 
-I'm not gonna lie, i feel empty
+on construction
 
 ## Tech Stack
 
