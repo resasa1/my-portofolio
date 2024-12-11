@@ -3,9 +3,11 @@ import Nav from './Nav';
 import Notes from './Notes';
 // import Sidebar from './Sidebar';
 import SidebarNotes from './NoteSide';
+import { Footer } from './Footer';
 
 export default function App() {
   return (
+    <>
     <div className='flex font-courier max-w-full'>
       <div className='w-64 h-auto border-r'>
         {/* <Sidebar /> */}
@@ -17,5 +19,7 @@ export default function App() {
         <Notes />
       </div>
     </div>
+    <Footer />
+    </>
   )
 }

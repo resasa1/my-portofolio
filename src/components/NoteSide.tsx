@@ -5,7 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Pencil, X, Trash2 } from "lucide-react";
-import { format } from "date-fns";
+// import { format } from "date-fns";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 interface Note {
   id: number;
@@ -18,7 +21,9 @@ export default function SidebarNotes() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [newNote, setNewNote] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-
+  const formatDate = (date:string) => {
+    return dayjs(date).fromNow();
+  }
   // Load notes from localStorage when component mounts
   useEffect(() => {
     const storedNotes = localStorage.getItem("notes");
@@ -131,23 +136,23 @@ export default function SidebarNotes() {
       <ScrollArea className="flex-grow">
         {notes.map((note) => (
           <div key={note.id} className="bg-white p-2 mb-2 rounded shadow">
-            <div className="flex justify-between items-start">
-              <div>
-                <p className="text-sm mb-1">{note.content}</p>
-                <p className="text-xs text-gray-500">
-                  {format(new Date(note.createdAt), "MMM d, yyyy HH:mm")}
-                </p>
-              </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => deleteNote(note.id)}
-                aria-label="Delete note"
-                className="h-6 w-6"
-              >
-                <Trash2 className="h-4 w-4" />
-              </Button>
-            </div>
+        <div className="flex justify-between items-start">
+          <div>
+            <p className="text-sm mb-1">{note.content}</p>
+            <p className="text-xs text-gray-500">
+          {formatDate(note.createdAt.toString())}
+            </p>
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => deleteNote(note.id)}
+            aria-label="Delete note"
+            className="h-6 w-6"
+          >
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        </div>
           </div>
         ))}
       </ScrollArea>

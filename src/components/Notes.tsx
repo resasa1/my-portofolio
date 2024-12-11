@@ -41,7 +41,7 @@ export default function Notes() {
 
     return (
         <div className='mt-24 ml-5 max-w-md'>
-            <div>
+            <div className=' pl-6 border-l-4 border-primary'>
                 <blockquote>"{ListNotes[currentIndex].note}"</blockquote>
                 <p><strong>- {ListNotes[currentIndex].name},</strong> {ListNotes[currentIndex].role}</p>
             </div>
