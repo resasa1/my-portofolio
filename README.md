@@ -1,6 +1,6 @@
 # My Portofolio
 
-on construction
+under construction
 
 ## Tech Stack
 
